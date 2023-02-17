@@ -1,0 +1,39 @@
+/*
+    +------------------------------------+
+    |        Elements in all page        |
+    +------------------------------------+
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+:root {
+    --primary-color: #272727;
+    --secondary-color: #fff;
+    --titles-color: #20295b;
+    --primary-font: 'Times New Roman', Times, serif;
+
+}
+/*
+    +------------------------------------+
+    |     Elements in header section     |
+    +------------------------------------+
+*/
+.header-sec {
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 30%;
+}
+.logo {
+    width: 6%;
+    height: 6%;
+}
+.title {
+    color: var(--titles-color);
+    font-weight: 800;
+    font-size: 2.5em;
+}
