@@ -14,7 +14,7 @@ export class Noticia{
         isHosted,
         pillarId,
         pillarName,
-        tags:[{webTitle:author}]
+        tags
     }){
         this.id=id;
         this.type=type;
@@ -25,11 +25,11 @@ export class Noticia{
         this.webUrl=webUrl;
         this.apiUrl=apiUrl;
         this.headline=headline;
-        this.thumbnail=thumbnail?thumbnail:"/assets/img/Breaking news.png";
+        this.thumbnail=thumbnail?thumbnail:"/assets/img/Breaking news.jpg";
         this.isHosted=isHosted;
         this.pillarId=pillarId;
         this.pillarName=pillarName;
-        this.author=author;
+        this.author=tags.length>0?tags[0].webTitle:"Unknown";
     
     }
     static async fetchNoticias(props){
@@ -37,6 +37,7 @@ export class Noticia{
     const query=keys.filter(key=>props[key]!="").map(key=>`${key}=${props[key]}`).join("&")
     const data= await fetch(`${API_URL}?${query}&api-key=${API_KEY}&format=json&show-fields=headline,thumbnail&show-tags=contributor`)
     const json=await data.json()
+    console.log(json.response.results);
     const noticias=json.response.results.map(noticia=>new Noticia(noticia))
     return noticias
     }
