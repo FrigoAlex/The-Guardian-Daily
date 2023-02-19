@@ -3,10 +3,13 @@
     |        Elements in all page        |
     +------------------------------------+
 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body {
     font-family: 'Times New Roman', Times, serif;
 }
 :root {
@@ -14,6 +17,8 @@
     --secondary-color: #fff;
     --titles-color: #20295b;
     --primary-font: 'Times New Roman', Times, serif;
+    --secondary-font: Roboto, sans-serif;
+    --mini-margin-x: 0 0.2rem;
 
 }
 /*
@@ -34,6 +39,89 @@
 }
 .title {
     color: var(--titles-color);
+    text-align: center;
     font-weight: 800;
     font-size: 2.5em;
+}
+/*
+  +------------------------------------+
+  |    Elements in the news section    |
+  +------------------------------------+
+*/
+.news-sec {
+    background: #333b43;
+    padding: 1.3rem 5% 1.5rem 5%;
+}
+.filters {
+    margin-bottom: 1rem;
+}
+.filter-name {
+    display: inline;
+    color: var(--secondary-color);
+}
+.search {
+    float: right;
+}
+.card-cont {
+    display: flex;
+    justify-content: center;
+}
+.news-cont {
+    display: flex;
+    justify-content: center;
+    gap:1rem;
+    flex-wrap: wrap;
+}
+.card {
+    width: 20rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--secondary-color);
+    border-radius: 8px;
+}
+.card-img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 8px 8px 0 0;
+}
+.card-body {
+    padding: .5rem;
+}
+.card-title {
+    font-size: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}
+.card-footer {
+    font-family: var(--secondary-font);
+    padding: 1rem;
+    background: #131515;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 5px 5px;
+}
+.card-footer-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+}
+.card-footer-element {
+    padding: 0 0.4rem;
+}
+.card-footer-element::before {
+    margin: var(--mini-margin-x);
+}
+.card-link {
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
