@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Guardian Daily</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaquerys.css">
     <link rel="icon" href="assets/img/Guardian-Helmet.ico">
 </head>
 <body>
@@ -14,11 +16,28 @@
         <h1 class="title">The Guardian Daily</h1>
     </header>
     <main class="news-sec">
-        <div class="filters">
-
-        </div>
+        <form class="filters">
+            <p class="filter-name">Language:</p>
+            <select>
+                <option value="">All</option>
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+            </select>
+            <p class="filter-name">Page Size:</p>
+            <select>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select>
+            <div class="search filter-name">
+                <label class="search__label" for="search">Search:</label>
+                <input class="search__input" type="text" name="search" id="search">
+            </div>
+        </form>
         <div class="news-cont">
-            
+                
         </div>
     </main>
     <script src="assets/js/index.js" type="module"></script>
