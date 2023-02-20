@@ -39,6 +39,6 @@ export class Noticia{
     const json=await data.json()
     console.log(json.response.results);
     const noticias=json.response.results.map(noticia=>new Noticia(noticia))
-    return noticias
+    return {noticias, pages:json.response.pages};
     }
 }
