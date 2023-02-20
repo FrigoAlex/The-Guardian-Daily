@@ -10,6 +10,10 @@ const nodeCreate = (element, className, Attribute, textContent) => {
     return nodeElement;
 }
 
+export const renderCleaner = (element) => {
+    element.innerHTML = "";
+}
+
 export const renderNews = ({ author, headline, sectionName, thumbnail, webUrl, webPublicationDate }) => {
     const authorNode = nodeCreate("li", ["card-footer-element", "bi", "bi-person-fill"], {}, author);
     const headlineNode = nodeCreate("h4", ["card-title"], {}, headline);
@@ -31,4 +35,15 @@ export const renderNews = ({ author, headline, sectionName, thumbnail, webUrl, w
     cardNode.appendChild(cardFooterNode);
     cardNode.appendChild(webUrlNode);
     return cardNode;
+}
+
+export const reactiveNews = (news) => {
+    const newsElements = news.map((newChild) => {
+    return renderNews(newChild);
+});
+const newsCont = document.querySelector(".news-cont");
+renderCleaner(newsCont);
+newsElements.forEach(element => {
+    newsCont.appendChild(element);
+}); 
 }
