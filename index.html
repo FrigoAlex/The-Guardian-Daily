@@ -17,14 +17,14 @@
     </header>
     <main class="news-sec">
         <form class="filters">
-            <p class="filter-name">Language:</p>
-            <select>
+            <label for="Language" class="filter-name">Language:</label>
+            <select name="Language">
                 <option value="">All</option>
                 <option value="en">English</option>
                 <option value="es">Spanish</option>
             </select>
-            <p class="filter-name">Page Size:</p>
-            <select>
+            <label for="Page-Size" class="filter-name">Page Size:</label>
+            <select name="Page-Size">
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
@@ -32,8 +32,8 @@
                 <option value="50">50</option>
             </select>
             <div class="search filter-name">
-                <label class="search__label" for="search">Search:</label>
-                <input class="search__input" type="text" name="search" id="search">
+                <label class="search-label" for="search">Search:</label>
+                <input class="search-input" type="text" name="search" id="search">
             </div>
         </form>
         <div class="news-cont">
