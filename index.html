@@ -17,27 +17,44 @@
     </header>
     <main class="news-sec">
         <form class="filters">
-            <label for="Language" class="filter-name">Language:</label>
-            <select name="Language">
-                <option value="">All</option>
-                <option value="en">English</option>
-                <option value="es">Spanish</option>
-            </select>
-            <label for="Page-Size" class="filter-name">Page Size:</label>
-            <select name="Page-Size">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-            </select>
+            <div class="d-inline-block">
+                <div class="input-group">
+                    <label for="Language" class="filter-name">Language:</label>
+                    <select class="form-input" name="Language">
+                        <option value="">All</option>
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="Page-Size" class="filter-name">Page Size:</label>
+                    <select class="form-input" name="Page-Size">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
             <div class="search filter-name">
                 <label class="search-label" for="search">Search:</label>
-                <input class="search-input" type="text" name="search" id="search">
+                <input class="form-input" type="text" name="search" id="search">
             </div>
         </form>
         <div class="news-cont">
                 
+        </div>
+        <div class="pagination">
+            <div class="pag-elements">
+                <button class="pag-btn" id="prev-btn"><i class="bi bi-arrow-left"></i></button>
+                <ul class="pag-elements-ul">
+                    <li class="pag-element" id="pag-1">1</li>
+                    <li class="pag-element" id="pag-2">2</li>
+                    <li class="pag-element" id="pag-3">3</li>
+                </ul>
+                <button class="pag-btn" id="next-btn"><i class="bi bi-arrow-right"></i></button>
+            </div>
         </div>
     </main>
     <script src="assets/js/index.js" type="module"></script>
