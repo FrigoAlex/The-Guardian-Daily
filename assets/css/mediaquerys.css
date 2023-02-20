@@ -1,5 +1,31 @@
+@media screen and (max-width: 1024px) {
+    .logo {
+        width: 8%;
+        height: 8%;
+    }
+}
+@media screen and (max-width: 938px) {
+    .logo {
+        display: none;
+    }
+}
+@media screen and (max-width: 630px) {
+    .filters {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .input-group {
+        margin: 0.5rem 0;
+    }
+}
 @media screen and (max-width: 330px) {
     .card {
         width: 16rem;
+    }
+}
+@media screen and (max-width: 292px) {
+    #search {
+        width: 170px;
     }
 }
