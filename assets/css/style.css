@@ -49,6 +49,10 @@ body {
   +------------------------------------+
 */
 .news-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 90vh;
     background: #333b43;
     padding: 1.3rem 5% 1.5rem 5%;
 }
@@ -98,7 +102,7 @@ body {
     display: inline-block;
     position: relative;
   }
-  .loader::after, .loader::before {
+.loader::after, .loader::before {
     content: '';  
     box-sizing: border-box;
     width: 14rem;
@@ -110,11 +114,10 @@ body {
     top: 0;
     animation: animloader 2s linear infinite;
   }
-  .loader::after {
+.loader::after {
     animation-delay: 1s;
   }
-  
-  @keyframes animloader {
+@keyframes animloader {
     0% {
       transform: scale(0);
       opacity: 1;
@@ -123,7 +126,13 @@ body {
       transform: scale(1);
       opacity: 0;
     }
-  }
+}
+.noNews {
+    color : var(--secondary-color);
+    font-size: 3rem;
+    text-align: center;
+    font-family: var(--secondary-font);
+}
 .card {
     width: 20rem;
     position: relative;
