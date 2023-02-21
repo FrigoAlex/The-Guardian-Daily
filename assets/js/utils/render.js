@@ -1,7 +1,7 @@
 import { formatDate } from "./dateconverter.js";
 import { Noticia } from "./classnews.js";
 import { getStoreElements } from "./store.js";
-import { arrowLeft, arrowRight, pagElementsUl } from "./inputElements.js";
+import { arrowLeft, arrowRight, pagElementsUl, loaderCont, newsCont } from "./inputElements.js";
 
 const nodeCreate = (element, className, Attribute, textContent) => {
     const nodeElement = document.createElement(element);
@@ -98,11 +98,17 @@ export const reactiveNews = ({noticias:news, pages}) => {
     return renderNews(newChild);
 });
 
-const newsCont = document.querySelector(".news-cont");
 renderCleaner(newsCont);
 newsElements.forEach(element => {
     newsCont.appendChild(element);
 }); 
 
 renderPagination(pages);
+}
+
+export const renderLoader = async (callback) => {
+    renderCleaner(newsCont);
+    loaderCont.classList.remove("disabled");
+    await callback();
+    loaderCont.classList.add("disabled");
 }
