@@ -37,8 +37,7 @@ export class Noticia{
     const query=keys.filter(key=>props[key]!="").map(key=>`${key}=${props[key]}`).join("&")
     const data= await fetch(`${API_URL}?${query}&api-key=${API_KEY}&format=json&show-fields=headline,thumbnail&show-tags=contributor`)
     const json=await data.json()
-    console.log(json.response.results);
     const noticias=json.response.results.map(noticia=>new Noticia(noticia))
-    return {noticias, pages:json.response.pages};
+    return {noticias, pages:json.response.pages > 750 ? 750 : json.response.pages};
     }
 }
