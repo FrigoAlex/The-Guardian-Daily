@@ -1,14 +1,20 @@
 import {lang, pageSize, q} from "./inputElements.js";
+import { debounceTimer } from "./constants.js";
+import { debounce } from "./debounce.js";
 import { Noticia } from "./classnews.js";
 import { reactiveNews } from "./render.js";
 import {saveStorage, getStoreElements} from "./store.js";
 
+const reactiveNewsDebounce = debounce(reactiveNews, debounceTimer);
+
+
 const compareParams = async (paramName, newParam) => {
-    const params = getStoreElements(["lang", "q", "page-size"]);
+    const params = getStoreElements(["lang", "q", "page-size", "page"]);
     if (params[paramName]!== newParam) {
         params[paramName] = newParam;
-        reactiveNews((await Noticia.fetchNoticias(params)).noticias);
+        params.page = 1;
         saveStorage(params);
+        reactiveNewsDebounce((await Noticia.fetchNoticias(params)));   
     }
 };
 
