@@ -1,4 +1,7 @@
 import { formatDate } from "./dateconverter.js";
+import { Noticia } from "./classnews.js";
+import { getStoreElements } from "./store.js";
+import { arrowLeft, arrowRight, pagElementsUl } from "./inputElements.js";
 
 const nodeCreate = (element, className, Attribute, textContent) => {
     const nodeElement = document.createElement(element);
@@ -37,13 +40,69 @@ export const renderNews = ({ author, headline, sectionName, thumbnail, webUrl, w
     return cardNode;
 }
 
-export const reactiveNews = (news) => {
+const paginationActive = (totalPages, page, segments) => {
+    const getPageData = (startIndex) => Array.from(
+      { length: segments },
+      (_, i) => ({
+        page: startIndex + i,
+        active: startIndex + i === page
+      })
+    );
+  
+    if (page == totalPages) {
+      return getPageData(totalPages - segments + 1);
+    } else if (page == 1) {
+      return getPageData(1);
+    } else {
+      return getPageData(page - Math.floor(segments / 2));
+    }
+  };
+  
+export const renderPagination = (pages) => {
+    const actualPage = Number(localStorage.getItem("page"));
+    const pagesArray = paginationActive(pages, actualPage, 3);
+    renderCleaner(pagElementsUl);
+    pagesArray.forEach(({ page, active }) => {
+      const pageElement = nodeCreate("li", ["pag-element"], {}, page);
+      if (active) {
+        pageElement.classList.add("pag-element-active");
+      }
+      pageElement.addEventListener("click", async () => {
+        localStorage.setItem("page", page);
+        reactiveNews(await Noticia.fetchNoticias(getStoreElements(["lang", "q", "page-size", "page"])));
+      });
+      pagElementsUl.appendChild(pageElement);
+    });
+    arrowLeft.onclick = async () => {
+        localStorage.setItem("page", 1);
+        reactiveNews(await Noticia.fetchNoticias(getStoreElements(["lang", "q", "page-size", "page"])));
+    }
+    arrowRight.onclick = async () => {
+        localStorage.setItem("page", pages);
+        reactiveNews(await Noticia.fetchNoticias(getStoreElements(["lang", "q", "page-size", "page"])));
+    }
+    if(actualPage==pages){
+        arrowRight.classList.add("disabled");
+    }else{
+        arrowRight.classList.remove("disabled");
+    }
+        if(actualPage==1){
+        arrowLeft.classList.add("disabled");
+        }else{
+        arrowLeft.classList.remove("disabled");
+        }
+};
+
+export const reactiveNews = ({noticias:news, pages}) => {
     const newsElements = news.map((newChild) => {
     return renderNews(newChild);
 });
+
 const newsCont = document.querySelector(".news-cont");
 renderCleaner(newsCont);
 newsElements.forEach(element => {
     newsCont.appendChild(element);
 }); 
+
+renderPagination(pages);
 }
