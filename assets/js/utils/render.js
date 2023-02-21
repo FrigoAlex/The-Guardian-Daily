@@ -94,6 +94,10 @@ export const renderPagination = (pages) => {
 };
 
 export const reactiveNews = ({noticias:news, pages}) => {
+    if(news.length==0){
+        newsCont.innerHTML = `<h1 class="noNews">We could not find any news 😭</h1>`;
+        return;
+    }
     const newsElements = news.map((newChild) => {
     return renderNews(newChild);
 });
